@@ -1,0 +1,70 @@
+{% extends '../base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="register_background">
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="card w-50">
+            <div class="p-5">
+                <h1>Create Your Account!</h1>
+                <form id="registrationForm">
+                    {% csrf_token %}
+                    <input value="user" type="text" name="user_type" id="user_type" hidden>
+                    <div class="mb-3 mt-4">
+                        <label for="exampleInputName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="example">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputcontact" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="contact" name="contact" placeholder="1234567890">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="example@gmail.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+                        <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="******">
+                    </div>
+
+                    <!-- <div class="mb-3">
+                        <label for="exampleInputPassword2" class="form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="image" name="image" aria-label="Upload">
+                    </div> -->
+
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                            Create</button>
+                    </div>
+                    <div>
+                        <div class="mt-4">
+                            <p class="d-inline">Already have an account?</p>
+                            <a href="{% url 'login' %}" class="btn btn-link d-inline">Sign In</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- <div class="col-12 col-md-6 overflow-hidden">
+            <img src="{% static 'images/second.jpg' %}" alt="Image" class="ms-md-auto block ms-md-auto "
+                style="clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); height: 100vh; object-fit: cover;object-position: center;width: 100%;" />
+        </div> -->
+    </div>
+</div>
+
+<script src="{% static 'js/auth.js' %}"></script>
+
+{% endblock content %}

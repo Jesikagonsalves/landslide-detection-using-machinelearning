@@ -1,0 +1,116 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+
+{% include 'components/navbar.html' %}
+<nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb" class="py-3 align-middle bg-primary-subtle">
+    <div class="row container-fluid d-flex align-items-center justify-content-center">
+        <div class="col-auto me-auto ms-5">
+            <h4 class="text-dark">Detect Slide</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Upload</li>
+                <li class="breadcrumb-item active" aria-current="page">Detect Slide</li>
+            </ol>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid py-5">
+    <div class="card rounded-3 p-5">
+        <div class="p-4">
+            <h3 class="text-center">Land Details</h3>
+            <form class="my-3" id="detectlandslide">
+                {% csrf_token %}
+                <div class="row row-cols-2 d-flex flex-row g-3">
+                    <div class="col">
+                        <label for="season" class="form-label">Season</label>
+                        <select id="season" name="season" class="form-control">
+                            <option value="0">Mansoon</option>
+                            <option value="1">Winter</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="moisture" class="form-label">Moisture</label>
+                        <input class="form-control" type="text" id="moisture" name="moisture" placeholder="in %. Ex: 60"
+                            required />
+                    </div>
+                    <div class="col">
+                        <label for="type" class="form-label">Soil Type</label>
+                        <select id="type" name="type" class="form-control">
+                            <option value="2">Red</option>
+                            <option value="1">Clayey</option>
+                            <option value="0">Alluvial</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="slope" class="form-label">Slope</label>
+                        <select id="slope" name="slope" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="stress" class="form-label">Soil Stress</label>
+                        <select id="stress" name="stress" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="construction" class="form-label">
+                            Is any heavy construction activities identified nearby? </label>
+                        <select id="construction" name="construction" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="mining" class="form-label">
+                            Did you notice Mining activity nearby? </label>
+                        <select id="mining" name="mining" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="deforest" class="form-label">
+                            Did you notice Deforestation locally? </label>
+                        <select id="deforest" name="deforest" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="my-2">
+                    <label for="location" class="form-label">
+                        Location </label>
+                    <select id="location" name="location" class="form-control" required>
+                        <option value="">Select Location</option>
+                        {% for location in Locations %}
+                        <option value="{{location}}">{{location}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="text-end py-3">
+                    <button type="submit" class="btn btn-primary w-90 text-center" id="submit">
+                        Detect Slide
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<script src="{% static 'js/upload.js' %}"></script>
+
+{% endblock content %}
